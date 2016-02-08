@@ -4,3 +4,34 @@
 @import "base/base";
 //@import "components/patterns";
 @import "patterns/patterns";
+
+//$tablet: new-breakpoint(max-width 760px 4);
+$mobile: new-breakpoint(max-width 760px 4);
+
+.main-content {
+	min-height: 400px;
+	@include outer-container;
+	margin: 0;
+	max-width: 100%;
+}
+
+.left-content {
+	@include span-columns(2);
+
+	@include media($mobile) {
+	  @include span-columns(4);
+	}
+
+}
+
+.map-content {
+	@include span-columns(10);
+
+	@include media($mobile) {
+	  @include span-columns(4);
+	}
+}
+
+.left-content form, h2 {
+	padding: 1em;
+}

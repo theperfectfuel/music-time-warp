@@ -1,4 +1,6 @@
 
+
+
   var bittersMap = (function () {
     var myLatlng = new google.maps.LatLng(40.072069, -100.5534),
         mapCenter = new google.maps.LatLng(40.072069, -100.5534),
@@ -42,10 +44,6 @@
             { lightness: 10}
           ]}
         ]);
-
-        function printLatLng() {
-          console.log(myLatlng);
-        }
 
         google.maps.event.addListener(marker, 'click', function () {
           infowindow.open(map,marker);

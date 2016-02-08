@@ -23,69 +23,78 @@
         <!-- Add your site or application content here -->
         <div id="main" class="page-wrap">
 
-            <header class="navigation" role="banner">
-              <div class="navigation-wrapper">
-                <a href="javascript:void(0)" class="logo">
-                  <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image">
-                </a>
-                <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
-                <nav role="navigation">
-                  <ul id="js-navigation-menu" class="navigation-menu show">
-                    <li class="nav-link"><a href="javascript:void(0)">Products</a></li>
-                    <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
-                    <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
-                    <li class="nav-link more"><a href="javascript:void(0)">More</a>
-                      <ul class="submenu">
-                        <li><a href="javascript:void(0)">Submenu Item</a></li>
-                        <li><a href="javascript:void(0)">Another Item</a></li>
-                        <li class="more"><a href="javascript:void(0)">Item with submenu</a>
-                          <ul class="submenu">
-                            <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
-                            <li><a href="javascript:void(0)">Another Item</a></li>
-                          </ul>
-                        </li>
-                        <li class="more"><a href="javascript:void(0)">Another submenu</a>
-                          <ul class="submenu">
-                            <li><a href="javascript:void(0)">Sub-submenu</a></li>
-                            <li><a href="javascript:void(0)">An Item</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </nav>
-                <div class="navigation-tools">
-                  <div class="search-bar">
-                    <form role="search">
-                      <input type="search" placeholder="Enter Search" />
-                      <button type="submit">
-                        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
-                      </button>
-                    </form>
+          <header class="navigation" role="banner">
+            <div class="navigation-wrapper">
+              <a href="javascript:void(0)" class="logo">
+                <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image">
+              </a>
+              <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+              <nav role="navigation">
+                <ul id="js-navigation-menu" class="navigation-menu show">
+                  <li class="nav-link"><a href="javascript:void(0)">Products</a></li>
+                  <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
+                  <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
+                  <li class="nav-link more"><a href="javascript:void(0)">More</a>
+                    <ul class="submenu">
+                      <li><a href="javascript:void(0)">Submenu Item</a></li>
+                      <li><a href="javascript:void(0)">Another Item</a></li>
+                      <li class="more"><a href="javascript:void(0)">Item with submenu</a>
+                        <ul class="submenu">
+                          <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
+                          <li><a href="javascript:void(0)">Another Item</a></li>
+                        </ul>
+                      </li>
+                      <li class="more"><a href="javascript:void(0)">Another submenu</a>
+                        <ul class="submenu">
+                          <li><a href="javascript:void(0)">Sub-submenu</a></li>
+                          <li><a href="javascript:void(0)">An Item</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+              <div class="navigation-tools">
+                <div class="search-bar">
+                  <form role="search">
+                    <input type="search" placeholder="Enter Search" />
+                    <button type="submit">
+                      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
+                    </button>
+                  </form>
+                </div>
+              </div> <!-- end navigation-tools -->
+            </div> <!-- end navigation-wrapper -->
+          </header>
+
+
+          <div class="hero">
+              <div class="hero-inner">
+              <a href="" class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image"></a>
+                  <div class="hero-copy">
+                      <h1>Short description of Product</h1>
+                      <p>A few reasons why this product is worth using, who it's for and why they need it.</p>    
                   </div>
-                </div>
               </div>
-            </header>
+          </div> <!-- end hero div -->
 
-
-            <div class="hero">
-                <div class="hero-inner">
-                <a href="" class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png
-            " alt="Logo Image"></a>
-                    <div class="hero-copy">
-                        <h1>Short description of Product</h1>
-                        <p>A few reasons why this product is worth using, who it's for and why they need it.</p>    
-                    </div>
-                </div>
+          <div class="main-content">
+            <div class="left-content">
+              <h2>Welcome to the Music Time Warp</h2>
+              <form id="year-list">
+                 <select id="year">
+                  <option value="default">Select a City</option>
+                  <option value="seattle">Seattle</option>
+                  <option value="los-angeles">Los Angeles</option>
+                  <option value="san-francisco">San Francisco</option>
+                  <option value="memphis">Memphis</option>
+                </select>
+              </form>
             </div>
-
-
-
-
-
-            <h2>This is where all of the awesome music stuff will go.</h2>
-
-            <div id="map_canvas"></div>
+            <div class="map-content">
+              <div id="map_canvas"></div>
+            </div>
+          </div>
 
 
         </div> <!-- end main div -->
@@ -120,11 +129,14 @@
         </footer>
 
 
+            
             <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
             <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
             <script src="js/plugins.js"></script>
-            <script src="https://maps.googleapis.com/maps/api/js"></script>
-            <script src="js/maps.js"></script>
+            <!-- <script src="js/maps.js"></script> -->
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCHDMH8onx2JK3xygl4hKdwrp62QKz1fU&callback=initMap">
+            </script>
+            <script src="js/markerclusterer.js"></script>
             <script src="js/main.js"></script>
 
             <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
