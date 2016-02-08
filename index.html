@@ -83,17 +83,25 @@
               <h2>Welcome to the Music Time Warp</h2>
               <form id="year-list">
                  <select id="year">
-                  <option value="default">Select a City</option>
-                  <option value="seattle">Seattle</option>
-                  <option value="los-angeles">Los Angeles</option>
-                  <option value="san-francisco">San Francisco</option>
-                  <option value="memphis">Memphis</option>
+                  <option value="1959">1960</option>
+                  <option value="1969">1970</option>
+                  <option value="1979">1980</option>
+                  <option value="1989">1990</option>
+                  <option value="1999">2000</option>
+                  <option value="2009">2010</option>
                 </select>
               </form>
-            </div>
+            </div> <!-- close left-content -->
+
             <div class="map-content">
               <div id="map_canvas"></div>
             </div>
+          </div>
+          
+
+          <div class="results-container">
+            <div class="search-results"></div>
+            <div class="results"></div>
           </div>
 
 
@@ -127,6 +135,19 @@
 
           <p>Disclaimer area lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, nostrum repudiandae saepe.</p>
         </footer>
+
+
+        <div class="templates hidden">
+          <dl class="result artist">
+            <dt>Artist</dt>
+            <dd class="artist-name"></dd>
+            <dt>City</dt>
+            <dd class="city"></dd>
+          </dl>
+          <div class="error">
+            <p>Uh-oh! Something went wrong with your request. Here's what we know:</p>
+          </div>
+        </div>
 
 
             

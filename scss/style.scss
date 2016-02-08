@@ -35,3 +35,26 @@ $mobile: new-breakpoint(max-width 760px 4);
 .left-content form, h2 {
 	padding: 1em;
 }
+
+.inspiration { 
+	margin-left: 3em;
+}
+
+.result {
+	border: 1px solid black;
+	padding: 5px;
+	margin: 0 auto 1em auto;
+}
+
+.error {
+	background-color: #F78181;
+	padding: 1em;
+}
+
+.user {
+	display: inline-block;
+}
+
+.hidden {
+	display: none;
+}
