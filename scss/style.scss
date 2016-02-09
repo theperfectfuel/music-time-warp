@@ -9,7 +9,7 @@
 $mobile: new-breakpoint(max-width 760px 4);
 
 .main-content {
-	min-height: 400px;
+	min-height: 440px;
 	@include outer-container;
 	margin: 0;
 	max-width: 100%;

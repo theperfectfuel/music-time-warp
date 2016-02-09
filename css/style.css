@@ -516,7 +516,7 @@ header.navigation {
     text-align: center; }
 
 #map_canvas {
-  height: 400px;
+  height: 440px;
   width: 100%; }
 
 #map_canvas img {
@@ -536,7 +536,7 @@ header.navigation {
   margin: 0; }
 
 .main-content {
-  min-height: 400px;
+  min-height: 440px;
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
@@ -581,3 +581,21 @@ header.navigation {
 
 .left-content form, h2 {
   padding: 1em; }
+
+.inspiration {
+  margin-left: 3em; }
+
+.result {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 0 auto 1em auto; }
+
+.error {
+  background-color: #F78181;
+  padding: 1em; }
+
+.user {
+  display: inline-block; }
+
+.hidden {
+  display: none; }
