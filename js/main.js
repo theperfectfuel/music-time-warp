@@ -18,7 +18,11 @@ $(document).ready(function() {
     var year = $('#year').val();
     //myAddMarker(city);
     getArtists(year);
-    console.log(artists);
+  });
+
+  $('#year-list').submit(function(e) {
+    e.preventDefault();
+    clearOverlays();
   });
 
 }); // end ready function
@@ -37,7 +41,7 @@ function initMap() {
     zoom: 4,
     scrollwheel: false,
     draggable: true,
-    disableDefaultUI: true,
+    disableDefaultUI: false,
   });
 
   mc = new MarkerClusterer(map);
@@ -45,10 +49,12 @@ function initMap() {
 
 } // close initMap function
 
-function myAddMarker(name, city) {
-  var markerInfo = name + ": " + city;
+function myAddMarkers(artistSet) {
 
-    geocoder.geocode({address: city}, function (results, status) {
+  for (i in artistSet) {
+    var markerInfo = artistSet[i].name + ": " + artistSet[i].city;
+
+    geocoder.geocode({address: artistSet[i].city}, function (results, status) {
 
 
       if(status == google.maps.GeocoderStatus.OK) {
@@ -56,19 +62,29 @@ function myAddMarker(name, city) {
           content: markerInfo
         });
         var marker = new google.maps.Marker({
-            map: map,
+            //map: map,
             position: results[0].geometry.location,
-            animation: google.maps.Animation.DROP,
-            title: name
+            title: artistSet[i].name,
+            infowindow: markerInfo
         });
         marker.addListener('click', function() {
           infowindow.open(map, marker);
         });
         markers.push(marker);
-    } // end of if
-  });
+      } // end of if
+      // the following line will only work correctly here, but it runs each time the loop iterates. WHY???
+      mc.addMarkers(markers);
+    }); // end of geocoder function
+  } // close for loop
 
 } // end addMarker function
+
+function clearOverlays() {
+  for (var i = 0; i < markers.length; i++ ) {
+    markers[i].setMap(null);
+  }
+  markers.length = 0;
+}
 
 // ECHO NEST API CALL
 var getArtists = function(year) {
@@ -83,18 +99,22 @@ var getArtists = function(year) {
   
   var baseURL = "http://developer.echonest.com/api/v4/artist/search?api_key=DIVEWNESX3GN4Q7NV&";
   var searchURL = "&artist_start_year_after=1969&artist_start_year_before=1980&";
-  var restofURL ="artist_location=us&bucket=artist_location&bucket=years_active&format=json&callback=?&results=50";
+  var restofURL ="artist_location=us&bucket=artist_location&bucket=years_active&format=json&callback=?&results=10";
   $.ajax({
     url: baseURL+restofURL,
     data: request,
   }) // end ajax method
   .done(function(response){ //this waits for the ajax to return with a succesful promise object
-    artistSet = response.response.artists;
-    for (i in artistSet) {
-      var artistName = artistSet[i].name;
-      var artistCity = artistSet[i].artist_location.city;
-      myAddMarker(artistName, artistCity);
+    artistResp = response.response.artists;
+    for (i in artistResp) {
+      //var artistName = artistSet[i].name;
+      //var artistCity = artistSet[i].artist_location.city;
+      var artist = {name: artistResp[i].name, city: artistResp[i].artist_location.city};
+      artistSet.push(artist);
+      //myAddMarker(artistName, artistCity);
     } // end for loop
+    myAddMarkers(artistSet);
+    $('#year').val('default');
   }) // end done method
   .fail(function(jqXHR, error){ //this waits for the ajax to return with an error promise object
     var errorElem = showError(error);
