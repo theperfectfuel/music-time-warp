@@ -34,6 +34,8 @@ var mc;
 var geocoder;
 var coords_obj;
 var markers = [];
+var markerInfo = [];
+var infoWindows = [];
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map_canvas"), {
@@ -49,33 +51,58 @@ function initMap() {
 
 } // close initMap function
 
-function myAddMarkers(artistSet) {
 
-  for (i in artistSet) {
-    var markerInfo = artistSet[i].name + ": " + artistSet[i].city;
+function myAddMarkers(bandName, city) {
 
-    geocoder.geocode({address: artistSet[i].city}, function (results, status) {
-
-
-      if(status == google.maps.GeocoderStatus.OK) {
+  geocoder.geocode({address: city}, function (results, status) {
+    if(status == google.maps.GeocoderStatus.OK) {
         var infowindow = new google.maps.InfoWindow({
-          content: markerInfo
+          content: bandName
         });
         var marker = new google.maps.Marker({
-            //map: map,
+            map: map,
             position: results[0].geometry.location,
-            title: artistSet[i].name,
-            infowindow: markerInfo
+            animation: google.maps.Animation.DROP,
+            title: bandName
         });
         marker.addListener('click', function() {
           infowindow.open(map, marker);
         });
         markers.push(marker);
+    } // end of if
+  });
+
+
+
+/*  for (var count = 0; count < artistSet.length; count++) {
+
+    console.log("Name: " + artistSet[count].name + "City: "+artistSet[count].city);
+    //var markerInfo = artistSet[i].name + ": " + artistSet[i].city;
+    geocoder.geocode({address: artistSet[count].city}, function (results, status) {
+      if(status == google.maps.GeocoderStatus.OK) {
+        console.log("Two: " + artistSet[count]);
+        markerInfo[count] = artistSet[count].name + ": " + artistSet[count].city;
+        infoWindows[count] = new google.maps.InfoWindow({
+          content: markerInfo[count]
+        });
+
+        markers[count] = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+            title: artistSet[count].name,
+        });
+
+        markers[count].index = count;
+
+        google.maps.event.addListener(markers[count], 'click', function() {
+          infoWindows[this.index].open(map, markers[this.index]);
+        });
+        //markers.push(marker);
       } // end of if
       // the following line will only work correctly here, but it runs each time the loop iterates. WHY???
       mc.addMarkers(markers);
     }); // end of geocoder function
-  } // close for loop
+  } // close for loop*/
 
 } // end addMarker function
 
@@ -99,22 +126,31 @@ var getArtists = function(year) {
   
   var baseURL = "http://developer.echonest.com/api/v4/artist/search?api_key=DIVEWNESX3GN4Q7NV&";
   var searchURL = "&artist_start_year_after=1969&artist_start_year_before=1980&";
-  var restofURL ="artist_location=us&bucket=artist_location&bucket=years_active&format=json&callback=?&results=10";
+  var restofURL ="artist_location=us&bucket=artist_location&bucket=years_active&format=json&callback=?&results=30";
   $.ajax({
     url: baseURL+restofURL,
     data: request,
   }) // end ajax method
   .done(function(response){ //this waits for the ajax to return with a succesful promise object
-    artistResp = response.response.artists;
-    for (i in artistResp) {
-      //var artistName = artistSet[i].name;
-      //var artistCity = artistSet[i].artist_location.city;
-      var artist = {name: artistResp[i].name, city: artistResp[i].artist_location.city};
-      artistSet.push(artist);
-      //myAddMarker(artistName, artistCity);
+    var artistResp = response.response.artists;
+    for (var i = 0; i < artistResp.length; i++) {
+        myFunction = function() {
+          var artist = {bandName: artistResp[i].name, city: artistResp[i].artist_location.city};
+          myAddMarkers(artist.bandName, artist.city);
+          artistSet.push(artist);
+        };
+        myFunction();
     } // end for loop
-    myAddMarkers(artistSet);
+/*    for (var myCount=0; myCount < artistSet.length; myCount++) {
+      myFunction = function() {
+        myAddMarkers(artistSet[myCount].bandName, artistSet[myCount].city);
+        console.log(artistSet[myCount]);
+      };
+      myFunction();
+    }*/
+
     $('#year').val('default');
+
   }) // end done method
   .fail(function(jqXHR, error){ //this waits for the ajax to return with an error promise object
     var errorElem = showError(error);
