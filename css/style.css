@@ -607,3 +607,7 @@ header.navigation {
 
 .hidden {
   display: none; }
+
+#year-display {
+  text-align: center;
+  font-size: 1.4em; }

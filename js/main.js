@@ -16,7 +16,11 @@ $(document).ready(function() {
 
   $('#year-list').change(function() {
     var year = $('#year').val();
-    //myAddMarker(city);
+
+    var el = document.getElementById('year');
+    var text = el.options[el.selectedIndex].innerHTML;
+    $('#year-display').append('<div class="decades">The '+text+'</div>');
+
     getArtists(year);
   });
 
@@ -46,22 +50,24 @@ function initMap() {
       featureType: 'water',
       elementType: 'geometry.fill',
       stylers: [
-        {color: '#E8CCC4'},
-        {invert_lightness: true}
+        {color: '#a1e6f7'},
+        //{color: '#E8CCC4'},
+        {invert_lightness: false}
       ]
     },{ 
       featureType: 'water', 
       elementType: 'labels', 
       stylers: [ 
-        {invert_lightness: true}, 
+        {invert_lightness: false}, 
         {hue: '#ffffff'} 
       ] 
     },{
-      featureType: 'landscape.natural',
-      elementType: 'all',
+      featureType: 'landscape.natural.landcover',
+      elementType: 'geometry.fill',
       stylers: [
-        {hue: '#EBDFDF'},
-        {lightness: 5}
+        {hue: '#ddbcae'},
+        //{hue: '#EBDFDF'},
+        {lightness: 1}
       ]
     }
   ];
@@ -157,6 +163,7 @@ function clearOverlays() {
     markers[i].setMap(null);
   }
   markers.length = 0;
+  $('.decades').remove();
 }
 
 // ECHO NEST API CALL
