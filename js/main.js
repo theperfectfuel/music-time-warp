@@ -29,7 +29,7 @@ $(document).ready(function() {
     clearOverlays();
   });
 
-}); // end ready function
+}); // close ready function
 
 // Global variables for map functionality
 var artistSet = [];
@@ -43,8 +43,10 @@ var markerInfo = [];
 var infoWindows = [];
 var center = {lat: 37.397, lng: -100.644};
 
+// MAP INITIALIZATION FUNCTION
 function initMap() {
 
+  // variable to style the google map
   var styles = [
     {
       featureType: 'water',
@@ -72,6 +74,7 @@ function initMap() {
     }
   ];
 
+  // sets the center for roughly the center of the US
   var bounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(25.82, -124.39),
     new google.maps.LatLng(49.38, -66.94)
@@ -104,12 +107,14 @@ function initMap() {
 } // close initMap function
 
 
-function myAddMarkers(bandName, city) {
+function myAddMarkers(bandName, city, state, started) {
+
+  var bandInfo = "<div><p><strong>"+bandName+"</strong></p><p>"+city+", "+state+"</p><p>Started in: "+started+"</p></div>"
 
   geocoder.geocode({address: city}, function (results, status) {
     if(status == google.maps.GeocoderStatus.OK) {
         var infowindow = new google.maps.InfoWindow({
-          content: bandName
+          content: bandInfo
         });
         var marker = new google.maps.Marker({
             map: map,
@@ -124,40 +129,9 @@ function myAddMarkers(bandName, city) {
     } // end of if
   });
 
-
-
-/*  for (var count = 0; count < artistSet.length; count++) {
-
-    console.log("Name: " + artistSet[count].name + "City: "+artistSet[count].city);
-    //var markerInfo = artistSet[i].name + ": " + artistSet[i].city;
-    geocoder.geocode({address: artistSet[count].city}, function (results, status) {
-      if(status == google.maps.GeocoderStatus.OK) {
-        console.log("Two: " + artistSet[count]);
-        markerInfo[count] = artistSet[count].name + ": " + artistSet[count].city;
-        infoWindows[count] = new google.maps.InfoWindow({
-          content: markerInfo[count]
-        });
-
-        markers[count] = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location,
-            title: artistSet[count].name,
-        });
-
-        markers[count].index = count;
-
-        google.maps.event.addListener(markers[count], 'click', function() {
-          infoWindows[this.index].open(map, markers[this.index]);
-        });
-        //markers.push(marker);
-      } // end of if
-      // the following line will only work correctly here, but it runs each time the loop iterates. WHY???
-      mc.addMarkers(markers);
-    }); // end of geocoder function
-  } // close for loop*/
-
 } // end addMarker function
 
+// remove map markers and clear decades labels
 function clearOverlays() {
   for (var i = 0; i < markers.length; i++ ) {
     markers[i].setMap(null);
@@ -171,6 +145,7 @@ var getArtists = function(year) {
   var startYear = year;
   var endYear = (parseInt(year)+11);
   endYear = endYear.toString();
+
   // the parameters we need to pass in our request to echonest's API
   var request = { 
     artist_start_year_after: startYear,
@@ -188,19 +163,18 @@ var getArtists = function(year) {
     var artistResp = response.response.artists;
     for (var i = 0; i < artistResp.length; i++) {
         myFunction = function() {
-          var artist = {bandName: artistResp[i].name, city: artistResp[i].artist_location.city};
-          myAddMarkers(artist.bandName, artist.city);
+
+          var artist = {
+            bandName: artistResp[i].name, 
+            city: artistResp[i].artist_location.city, 
+            state: artistResp[i].artist_location.region, 
+            started: artistResp[i].years_active[0].start};
+
+          myAddMarkers(artist.bandName, artist.city, artist.state, artist.started);
           artistSet.push(artist);
         };
         myFunction();
     } // end for loop
-/*    for (var myCount=0; myCount < artistSet.length; myCount++) {
-      myFunction = function() {
-        myAddMarkers(artistSet[myCount].bandName, artistSet[myCount].city);
-        console.log(artistSet[myCount]);
-      };
-      myFunction();
-    }*/
 
     $('#year').val('default');
 
@@ -211,21 +185,6 @@ var getArtists = function(year) {
   }); // end fail method
 }; // end getArtists
 
-/*var showInspiration = function(artists) {
-  
-  // clone our result template code
-  var response = $('.templates .artist').clone();
-  
-  // Set the artist name properties in result
-  var artistElem = response.find('.artist-name');
-  artistElem.text(artists.name);
-
-  // set the reputation property in result
-  var city = response.find('.city');
-  city.text(artists.artist_location.city);
-
-  return response;
-};*/
 
 // takes error string and turns it into displayable DOM element
 var showError = function(error){
