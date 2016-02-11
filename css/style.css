@@ -179,13 +179,15 @@ picture {
   max-width: 100%; }
 
 .hero {
-  background: url("https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"), -webkit-linear-gradient(-280deg, #20392B, #7F99BE), no-repeat;
-  background: url("https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"), linear-gradient(10deg, #20392B, #7F99BE), no-repeat;
+  background: url("../img/old-radio-web1.jpg"), -webkit-linear-gradient(-280deg, #20392B, #7F99BE), no-repeat;
+  background: url("../img/old-radio-web1.jpg"), linear-gradient(10deg, #20392B, #7F99BE), no-repeat;
   background-color: #324766;
-  background-position: top;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 3em; }
+  padding-bottom: 3em;
+  vertical-align: bottom;
+  border-bottom: 3px solid #2e2e2e; }
   .hero .hero-logo img {
     height: 4em;
     margin-bottom: 1em; }
@@ -194,7 +196,7 @@ picture {
     margin-left: auto;
     margin-right: auto;
     margin: auto;
-    padding: 3.5em;
+    padding: 2.5em;
     text-align: center; }
     .hero .hero-inner::after {
       clear: both;
@@ -207,19 +209,23 @@ picture {
     .hero .hero-inner .hero-copy {
       text-align: center; }
       .hero .hero-inner .hero-copy h1 {
-        color: white;
-        font-size: 1.6em;
-        margin-bottom: 0.5em; }
+        color: black;
+        font-size: 2em;
+        margin-bottom: 0.5em;
+        text-shadow: 2px 2px 4px #ababab; }
         @media screen and (min-width: 53.75em) {
           .hero .hero-inner .hero-copy h1 {
-            font-size: 1.8em; } }
+            font-size: 2em; } }
       .hero .hero-inner .hero-copy p {
-        color: white;
-        line-height: 1.4em;
-        margin: 0 auto 3em auto; }
+        color: black;
+        line-height: 1.3em;
+        margin: 0 auto 3em auto;
+        font-size: 1.3em;
+        font-weight: 400;
+        text-shadow: 2px 2px 4px #ababab; }
         @media screen and (min-width: 53.75em) {
           .hero .hero-inner .hero-copy p {
-            font-size: 1.1em;
+            font-size: 1.3em;
             max-width: 40%; } }
 
 header.navigation {
@@ -446,9 +452,10 @@ header.navigation {
           display: block; } }
 
 .footer {
-  background: #1c3653;
+  background-color: #5C4C4B;
   padding: 3em 1.618em;
-  width: 100%; }
+  width: 100%;
+  border-top: 3px solid #2e2e2e; }
   .footer .footer-logo {
     margin-bottom: 2em;
     text-align: center; }
@@ -575,7 +582,8 @@ header.navigation {
       float: left;
       display: block;
       margin-right: 7.42297%;
-      width: 100%; }
+      width: 86.57213%;
+      margin-left: 6.71394%; }
       .map-content:last-child {
         margin-right: 0; } }
 

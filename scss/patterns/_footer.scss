@@ -8,9 +8,11 @@
   $footer-link-color: transparentize($footer-color, 0.6);
   $footer-disclaimer-color: transparentize($footer-color, 0.6);
 
-  background: $footer-background;
+  //background: $footer-background;
+  background-color: #5C4C4B;
   padding: ($base-spacing * 2) $gutter;
   width: 100%;
+  border-top: 3px solid #2e2e2e;
 
   .footer-logo {
     margin-bottom: 2em;

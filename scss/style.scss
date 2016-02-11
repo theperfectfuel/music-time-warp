@@ -28,7 +28,9 @@ $mobile: new-breakpoint(max-width 760px 4);
 	@include span-columns(10);
 
 	@include media($mobile) {
-	  @include span-columns(4);
+	  @include span-columns(3.5);
+	  @include shift(.25);
+	  //margin: 0 20px;
 	}
 }
 

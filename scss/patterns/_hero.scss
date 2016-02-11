@@ -4,16 +4,21 @@
   $large-screen: em(860) !default;
   $hero-background-top: #7F99BE; 
   $hero-background-bottom: #20392B;
-  $hero-color: white;
+  $hero-color: black;
   $gradient-angle: 10deg;
-  $hero-image: 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png';
+  $hero-image: '../img/old-radio-web1.jpg';
+  //$hero-image: 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png';
 
   @include background(url($hero-image), linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll);
   background-color: #324766;
-  background-position: top;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   padding-bottom: 3em;
+
+  vertical-align: bottom;
+
+  border-bottom: 3px solid #2e2e2e;
 
   .hero-logo img {
     height: 4em;
@@ -24,7 +29,7 @@
     @include outer-container;
     @include clearfix;
     margin: auto;
-    padding: 3.5em;
+    padding: 2.5em;
     text-align: center;
 
     .hero-copy {
@@ -32,21 +37,25 @@
       
       h1 {
         color: $hero-color;
-        font-size: 1.6em;
+        font-size: 2em;
         margin-bottom: 0.5em;
+        text-shadow: 2px 2px 4px #ababab;
 
         @include media($large-screen) {
-          font-size: 1.8em;
+          font-size: 2em;
         }
       }
 
       p {
         color: $hero-color;
-        line-height: 1.4em;
+        line-height: 1.3em;
         margin: 0 auto 3em auto; 
+        font-size: 1.3em;
+        font-weight: 400;
+        text-shadow: 2px 2px 4px #ababab;
 
         @include media($large-screen) {
-          font-size: 1.1em;
+          font-size: 1.3em;
           max-width: 40%;
         }
       }

@@ -30,21 +30,67 @@ $(document).ready(function() {
 // Global variables for map functionality
 var artistSet = [];
 var map;
+var styledMapType;
 var mc;
 var geocoder;
 var coords_obj;
 var markers = [];
 var markerInfo = [];
 var infoWindows = [];
+var center = {lat: 37.397, lng: -100.644};
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById("map_canvas"), {
-    center: {lat: 37.397, lng: -100.644},
-    zoom: 4,
-    scrollwheel: false,
-    draggable: true,
-    disableDefaultUI: false,
-  });
+
+  var styles = [
+    {
+      featureType: 'water',
+      elementType: 'geometry.fill',
+      stylers: [
+        {color: '#E8CCC4'},
+        {invert_lightness: true}
+      ]
+    },{ 
+      featureType: 'water', 
+      elementType: 'labels', 
+      stylers: [ 
+        {invert_lightness: true}, 
+        {hue: '#ffffff'} 
+      ] 
+    },{
+      featureType: 'landscape.natural',
+      elementType: 'all',
+      stylers: [
+        {hue: '#EBDFDF'},
+        {lightness: 5}
+      ]
+    }
+  ];
+
+  var bounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(25.82, -124.39),
+    new google.maps.LatLng(49.38, -66.94)
+  );
+
+  var mapOptions = {
+
+    mapTypeControlOptions: {
+      mapTypeIds: ['Styled']
+    },
+      bounds: bounds,
+      //center: {lat: 37.397, lng: -100.644},
+      //zoom: 4,
+      scrollwheel: true,
+      draggable: true,
+      disableDefaultUI: false,
+      mapTypeId: 'Styled'
+  };
+
+  var mapDiv = document.getElementById("map_canvas");
+  map = new google.maps.Map(mapDiv, mapOptions);
+  styledMapType = new google.maps.StyledMapType(styles, {name: 'Styled'});
+  map.mapTypes.set('Styled', styledMapType);
+
+  map.fitBounds(bounds);
 
   mc = new MarkerClusterer(map);
   geocoder = new google.maps.Geocoder();
