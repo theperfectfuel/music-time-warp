@@ -6,7 +6,7 @@
 @import "patterns/patterns";
 
 //$tablet: new-breakpoint(max-width 760px 4);
-$mobile: new-breakpoint(max-width 760px 4);
+$mobile: new-breakpoint(max-width 1230px 4);
 
 .main-content {
 	min-height: 440px;
@@ -25,6 +25,21 @@ $mobile: new-breakpoint(max-width 760px 4);
 
 }
 
+.left-main {
+	@include media($mobile) {
+		@include span-columns(2);
+	}
+}
+
+.left-clear {
+	float: right;
+	padding: .5em;
+
+	@include media($mobile) {
+		@include span-columns(2);
+	}
+}
+
 .map-content {
 	@include span-columns(10);
 
@@ -35,8 +50,8 @@ $mobile: new-breakpoint(max-width 760px 4);
 	}
 }
 
-.left-content form, h2 {
-	padding: 1em;
+.left-content form, h2, p {
+	padding: .5em;
 }
 
 .inspiration { 

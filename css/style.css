@@ -209,20 +209,20 @@ picture {
     .hero .hero-inner .hero-copy {
       text-align: center; }
       .hero .hero-inner .hero-copy h1 {
-        color: black;
-        font-size: 2em;
+        color: white;
+        font-size: 2.5em;
         margin-bottom: 0.5em;
-        text-shadow: 2px 2px 4px #ababab; }
+        text-shadow: 2px 2px 2px #2f2f2f; }
         @media screen and (min-width: 53.75em) {
           .hero .hero-inner .hero-copy h1 {
-            font-size: 2em; } }
+            font-size: 2.5em; } }
       .hero .hero-inner .hero-copy p {
-        color: black;
+        color: white;
         line-height: 1.3em;
-        margin: 0 auto 3em auto;
+        margin: 0 auto 2em auto;
         font-size: 1.3em;
         font-weight: 400;
-        text-shadow: 2px 2px 4px #ababab; }
+        text-shadow: 2px 2px 2px #2f2f2f; }
         @media screen and (min-width: 53.75em) {
           .hero .hero-inner .hero-copy p {
             font-size: 1.3em;
@@ -561,13 +561,34 @@ header.navigation {
   width: 14.70196%; }
   .left-content:last-child {
     margin-right: 0; }
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 1230px) {
     .left-content {
       float: left;
       display: block;
       margin-right: 7.42297%;
       width: 100%; }
       .left-content:last-child {
+        margin-right: 0; } }
+
+@media screen and (max-width: 1230px) {
+  .left-main {
+    float: left;
+    display: block;
+    margin-right: 7.42297%;
+    width: 46.28851%; }
+    .left-main:last-child {
+      margin-right: 0; } }
+
+.left-clear {
+  float: right;
+  padding: .5em; }
+  @media screen and (max-width: 1230px) {
+    .left-clear {
+      float: left;
+      display: block;
+      margin-right: 7.42297%;
+      width: 46.28851%; }
+      .left-clear:last-child {
         margin-right: 0; } }
 
 .map-content {
@@ -577,7 +598,7 @@ header.navigation {
   width: 82.94039%; }
   .map-content:last-child {
     margin-right: 0; }
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 1230px) {
     .map-content {
       float: left;
       display: block;
@@ -587,8 +608,8 @@ header.navigation {
       .map-content:last-child {
         margin-right: 0; } }
 
-.left-content form, h2 {
-  padding: 1em; }
+.left-content form, h2, p {
+  padding: .5em; }
 
 .inspiration {
   margin-left: 3em; }

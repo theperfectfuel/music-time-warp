@@ -62,21 +62,29 @@
 
           <div class="main-content">
             <div class="left-content">
-              <h2>Welcome to the Music Time Warp</h2>
-              <div id="year-display"></div>
-              <form id="year-list">
-                 <select id="year">
-                  <option value="default">Pick a decade</option>
-                  <option value="1959">1960s</option>
-                  <option value="1969">1970s</option>
-                  <option value="1979">1980s</option>
-                  <option value="1989">1990s</option>
-                  <option value="1999">2000s</option>
-                  <option value="2009">2010s</option>
-                </select>
-                <p>Use the button below to clear the map points and start again</p>
-                <button type="submit" id="clear">Clear Map</button>
-              </form>
+
+              <div class="left-main">
+                <p>Select your time frame. 
+                  Zoom around on the map. Hover or click the markers for more info.
+                </p>
+                <div id="year-display"></div>
+                <form id="year-list">
+                   <select id="year">
+                    <option value="default">Pick a decade</option>
+                    <option value="1959">1960s</option>
+                    <option value="1969">1970s</option>
+                    <option value="1979">1980s</option>
+                    <option value="1989">1990s</option>
+                    <option value="1999">2000s</option>
+                    <option value="2009">2010s</option>
+                  </select>
+              </div>
+
+              <div class="left-clear">
+                  <p>Use the button below to clear the map points and start again</p>
+                  <button type="submit" id="clear">Clear Map</button>
+              </div>
+                </form>
             </div> <!-- close left-content -->
 
             <div class="map-content">

@@ -4,7 +4,7 @@
   $large-screen: em(860) !default;
   $hero-background-top: #7F99BE; 
   $hero-background-bottom: #20392B;
-  $hero-color: black;
+  $hero-color: white;
   $gradient-angle: 10deg;
   $hero-image: '../img/old-radio-web1.jpg';
   //$hero-image: 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png';
@@ -37,22 +37,22 @@
       
       h1 {
         color: $hero-color;
-        font-size: 2em;
+        font-size: 2.5em;
         margin-bottom: 0.5em;
-        text-shadow: 2px 2px 4px #ababab;
+        text-shadow: 2px 2px 2px #2f2f2f;
 
         @include media($large-screen) {
-          font-size: 2em;
+          font-size: 2.5em;
         }
       }
 
       p {
         color: $hero-color;
         line-height: 1.3em;
-        margin: 0 auto 3em auto; 
+        margin: 0 auto 2em auto; 
         font-size: 1.3em;
         font-weight: 400;
-        text-shadow: 2px 2px 4px #ababab;
+        text-shadow: 2px 2px 2px #2f2f2f;
 
         @include media($large-screen) {
           font-size: 1.3em;
