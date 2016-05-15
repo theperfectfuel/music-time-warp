@@ -16,11 +16,8 @@ $(document).ready(function() {
 
 	$('#year-list').change(function() {
 		var year = $('#year').val();
-
-		var el = document.getElementById('year');
-		var text = el.options[el.selectedIndex].innerHTML;
+		var text = $("#year option:selected").text();
 		$('#year-display').append('<div class="decades">The '+text+'</div>');
-
 		getArtists(year);
 	});
 
@@ -94,7 +91,8 @@ function initMap() {
 			mapTypeId: 'Styled'
 	};
 
-	var mapDiv = document.getElementById("map_canvas");
+	var mapDiv = $('#map_canvas')[0];
+
 	map = new google.maps.Map(mapDiv, mapOptions);
 	styledMapType = new google.maps.StyledMapType(styles, {name: 'Styled'});
 	map.mapTypes.set('Styled', styledMapType);
